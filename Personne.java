@@ -20,11 +20,11 @@ Règles de Gestion :
 	
 public class Personne {
 	// Création des attributs
-	private String prenom;
-	private String nom;
-	private int age;
-	private boolean femme;
-	private Adresse nextadresse;
+	protected String prenom;
+	protected String nom;
+	protected int age;
+	protected boolean femme;
+	protected Adresse nextadresse;
 	
 	// Création des Getters et setters
 	public String getPrenom() {
@@ -56,7 +56,7 @@ public class Personne {
 	@Override
 	public String toString() {
 		return "Personne [prenom=" + prenom + ", nom=" + nom + ", age=" + age
-				+ ", femme=" + femme + " + nextadresse=" + nextadresse + "]";
+				+ ", femme=" + femme + " , + nextadresse=" + nextadresse + "]";
 	}
 	//constructeur
 	public Personne(String prenom, String nom, int age, boolean femme) {
