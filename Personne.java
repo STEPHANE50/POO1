@@ -23,7 +23,9 @@ public class Personne {
 	private String prenom;
 	private String nom;
 	private int age;
-	public boolean femme;
+	private boolean femme;
+	private Adresse nextadresse;
+	
 	// Création des Getters et setters
 	public String getPrenom() {
 		return prenom;
@@ -54,16 +56,23 @@ public class Personne {
 	@Override
 	public String toString() {
 		return "Personne [prenom=" + prenom + ", nom=" + nom + ", age=" + age
-				+ ", femme=" + femme + " ]";
-	}	  
+				+ ", femme=" + femme + " + nextadresse=" + nextadresse + "]";
+	}
+	//constructeur
 	public Personne(String prenom, String nom, int age, boolean femme) {
 		super();
 		this.prenom = prenom;
 		this.nom = nom;
 		this.age = age;
 		this.femme = femme;
+		
 	}
-	
+	public Adresse getNextadresse() {
+		return nextadresse;
+	}
+	public void setNextadresse(Adresse nextadresse) {
+		this.nextadresse = nextadresse;
+	}
 	
 	
 }	
