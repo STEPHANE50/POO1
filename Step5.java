@@ -8,13 +8,24 @@
  RG le réfugié au départ n'a pas d'adresse et n'est pas régularisé.*/
 
 import java.util.Date;
-import java.text.SimpleDateFormat;
-
 
 public class Step5 extends Personne {
 	private Date datelimite;
-	private Date datedujour = new Date();
+	// private Date datedujour = new Date();
 	private boolean regularise = false;
+	private String dateCourante;
+	private Adresse nextadresse;
+	private Adresse adresseresidence;
+
+	// -----------------------------------------------------------------------------------------------------
+	// Constructeurs
+	public Step5(String prenom, String nom, int age, boolean femme,
+			Date datelimite, boolean regularise) {
+		super(prenom, nom, age, femme);
+		this.datelimite = datelimite;
+		this.regularise = regularise;
+
+	}
 
 	// -------------------------------------------------------------------------------------------------------
 	public Date getDatelimite() {
@@ -26,14 +37,6 @@ public class Step5 extends Personne {
 		return regularise;
 	}
 
-	public Date getDatedujour() {
-		return datedujour;
-	}
-
-	public void setDatedujour(Date datedujour) {
-		this.datedujour = datedujour;
-	}
-
 	public boolean isRegularise() {
 		return regularise;
 	}
@@ -42,41 +45,32 @@ public class Step5 extends Personne {
 		this.regularise = regularise;
 	}
 
-	// -----------------------------------------------------------------------------------------------------------
-	// Affiche la chaîne de caractère qui décrit l'objet
 	@Override
 	public String toString() {
 		return "Step5 [prenom=" + prenom + ", nom=" + nom + ", age=" + age
-				+ ", femme=" + femme + " , + adresse=" + adresse + " ]";
+				+ ", femme=" + femme + ", adresse=" + adresse + ", datelimite="
+				+ datelimite + ", datedujour=" + dateCourante + ", regularise="
+				+ regularise + "]";
 	}
 
-	// Constructeurs
-
-		public Step5(String prenom, String nom, int age, boolean femme,
-				Date datelimite, boolean regularise) {
-			super(prenom, nom, age, femme);
-			this.datelimite = datelimite;
-			this.regularise= regularise;
-				
-	}
-    //------------------------------------------------------------------------------------------------------------------------   		
-		// Appel des methodes de la classe mere
-		@Override
-		public void Identifie (String prenom, String nom) {
-			//Tests pour comparer datelimite et regularise
-			
+	public void demanderAsile(Adresse adresseAssignation) {
+		Date dateCourante = new Date();
+		if (adresseresidence != null) {
+			if (dateCourante.before(this.datelimite))// la date limite n'est pas
+														// atteinte, on peut
+														// traiter la demande
+				System.out.println("Je demande l'asile pour");
+			this.setAdresse(adresseresidence);
+			this.regularise = true;
+		} else {
+			System.out.println("Adresse non valide");
 		}
-
-		@Override
-		public void Demenage(Adresse nvlleadresse) {
-			//TODO test sur code postal pour valider la demande
-			System.out.println("Je demande l'asile pour :" + nvlleadresse);
-			this.adresse = nvlleadresse;
-		}
-			
-
 	
+	}
+
+	@Override
+	public void Demenage(Adresse nvlleadresse) {
+		// TODO Auto-generated method stub
+		super.Demenage(nvlleadresse);
+	}
 }
-
-// --------------------------------------------------------------------------------------------------------
-

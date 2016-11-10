@@ -6,7 +6,7 @@ public class Adresse {
     private String nomvoie;
     private int codepostal;
     private String ville;
- 
+    
 // Création des Getters et Setters pour récupérer les attributs et les modifier
 public int getNumrue() {
 	return numrue;
